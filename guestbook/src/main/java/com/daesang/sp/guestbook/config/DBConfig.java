@@ -13,12 +13,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 @Configuration
-@EnableTransactionManagement // 트랜잭션 관련된 설정을 자동으로 해준다. 
+@EnableTransactionManagement 
 @PropertySource("classpath:/env.properties")
 public class DBConfig implements TransactionManagementConfigurer {
-	
-	// 단, 사용자 간의 트랜잭션 처리를 위한 PlatformTransactionManager를 설정하기 위해서는 TransactionManagementConfigure를 구현해야함. 
-	
 	
 	@Value("${DRIVER_CLASS_NAME}")
 	private String driverClassName;
@@ -33,7 +30,7 @@ public class DBConfig implements TransactionManagementConfigurer {
 	private String password;
 	
 	@Bean
-	public DataSource dataSource() { // DB 사용을 위한 데이터소스 생성
+	public DataSource dataSource() {
 		System.out.println(this.driverClassName);
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(driverClassName);
@@ -50,8 +47,6 @@ public class DBConfig implements TransactionManagementConfigurer {
 
 	@Override
 	public PlatformTransactionManager annotationDrivenTransactionManager() {
-		// annotationDrivenTransactionManager 이 함수를 오버라이딩해야함.
-		// PlatformTransactionnManager객체를 반환하게 하면 됨.
 		return transactionManager();
 	}
 }

@@ -34,6 +34,7 @@ public class GuestbookController {
 		}
 		
 		List<Integer> pageStartList = new ArrayList<>();
+		
 		for(int i=0; i<pageCount; i++) {
 			pageStartList.add(i * GuestbookService.LIMIT);
 		}
@@ -48,7 +49,6 @@ public class GuestbookController {
 	@PostMapping(path="/write")
 	public String write(@ModelAttribute Guestbook guestbook,HttpServletRequest request) {
 		String clientIp = request.getRemoteAddr();
-		System.out.println("clientIp : " + clientIp);
 		guestbookService.addGuestbook(guestbook, clientIp);
 		return "redirect:list";
 	}

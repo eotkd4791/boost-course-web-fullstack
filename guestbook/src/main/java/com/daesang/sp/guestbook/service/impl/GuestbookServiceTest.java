@@ -21,7 +21,5 @@ public class GuestbookServiceTest {
 		guestbook.setRegdate(new Date());
 		Guestbook result = guestbookService.addGuestbook(guestbook, "127.0.0.1");
 		System.out.println(result);
-		
 	}
-
 }

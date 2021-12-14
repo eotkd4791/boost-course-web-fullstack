@@ -10,10 +10,10 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-@Configuration // 설정 파일이라는 것을 알려줌
-@EnableWebMvc //MVC를 사용할 수 있도록 해줌
-@ComponentScan(basePackages= { "com.daesang.sp.guestbook.controller" }) // 컨트롤러들을 읽어옴
-public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter { // 이 설정들은  DispatcherServlet이 읽어들일 것임 
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages= { "com.daesang.sp.guestbook.controller" })
+public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter { 
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {

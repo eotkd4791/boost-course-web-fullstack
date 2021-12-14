@@ -20,9 +20,5 @@ public class GuestbookDaoTest {
 		guestbook.setRegdate(new Date());
 		
 		Long id = guestbookDao.insert(guestbook);
-		System.out.println("id: " + id);
 	}
-}
-
-
-// main 함수가 있는 클래스를 실행하려면 Run on Server가 아니라, Java Application으로 실행해야함. 
+} 
