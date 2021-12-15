@@ -10,7 +10,7 @@ tmp/
 *.swp
 *~.nib
 local.properties
-env.properties
+application.properties
 .settings/
 .loadpath
 .recommenders
