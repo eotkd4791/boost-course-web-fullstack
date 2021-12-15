@@ -3,7 +3,6 @@ package com.daesang.sp.guestbook.dto;
 import java.util.Date;
 
 public class Log {
-	
 	private Long id;
 	private String ip;
 	private String method;
@@ -34,9 +33,9 @@ public class Log {
 	}
 	
 	public Date getRegdate() {
-	
 		return regdate;
 	}
+	
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}

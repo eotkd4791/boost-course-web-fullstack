@@ -1,12 +1,8 @@
 package com.daesang.sp.guestbook.controller;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.daesang.sp.guestbook.dto.Guestbook;
+import com.daesang.sp.guestbook.dto.GuestbookResponse;
 import com.daesang.sp.guestbook.service.GuestbookService;
 
 @RestController
@@ -30,27 +27,8 @@ public class GuestbookApiController {
 	GuestbookService guestbookService;
 	
 	@GetMapping
-	public Map<String, Object> list(@RequestParam(name = "start", required = false, defaultValue = "0") int start) {
-		List<Guestbook> list = guestbookService.getGuestbooks(start);
-		
-		int count = guestbookService.getCount();
-		int pageCount = count / GuestbookService.LIMIT;
-		if(count % GuestbookService.LIMIT > 0) {
-			pageCount++;
-		}
-		
-		List<Integer> pageStartList = new ArrayList<>();
-		
-		for(int i=0; i<pageCount; i++) {
-			pageStartList.add(i * count);
-		}
-		
-		Map<String, Object> map = new HashMap<>();
-		map.put("list", list);
-		map.put("count", count);
-		map.put("pageStartList", pageStartList);
-		
-		return map;
+	public GuestbookResponse getGuestbooks(@RequestParam(name = "start", required = false, defaultValue = "0") int start) {
+		return guestbookService.getGuestbooks(start);		
 	}
 	
 	@PostMapping
@@ -63,8 +41,6 @@ public class GuestbookApiController {
 	public Map<String, String> delete(@PathVariable(name="id") Long id, HttpServletRequest request) {
 		String clientIp = request.getRemoteAddr();
 		int deleteCount = guestbookService.deleteGuestbook(id, clientIp);
-		
 		return Collections.singletonMap("success", deleteCount > 0 ? "true" : "false");		
 	}
 }
-

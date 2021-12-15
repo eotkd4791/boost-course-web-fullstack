@@ -14,24 +14,23 @@ import org.springframework.transaction.annotation.TransactionManagementConfigure
 
 @Configuration
 @EnableTransactionManagement 
-@PropertySource("classpath:/env.properties")
+@PropertySource("classpath:/application.properties")
 public class DBConfig implements TransactionManagementConfigurer {
 	
-	@Value("${DRIVER_CLASS_NAME}")
+	@Value("${db.driverClassName}")
 	private String driverClassName;
 	
-	@Value("${URL}")
+	@Value("${db.url}")
 	private String url;
 	
-	@Value("${USER_NAME}")
+	@Value("${db.userName}")
 	private String username;
 	
-	@Value("${PASSWORD}")
+	@Value("${db.password}")
 	private String password;
 	
 	@Bean
 	public DataSource dataSource() {
-		System.out.println(this.driverClassName);
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName(driverClassName);
 		dataSource.setUrl(url);

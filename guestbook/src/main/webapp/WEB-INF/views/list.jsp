@@ -12,18 +12,17 @@
 	<h1>방명록</h1>
 	
 	<br />방명록 전체 수 : ${count }<br />
-	
 
-	<c:forEach items="${list}" var="guestbook">
+	<c:forEach items="${guestbooks}" var="guestbook">
 		${guestbook.id }		<br />
 		${guestbook.name }		<br />
 		${guestbook.content }	<br />
 		${guestbook.regdate }	<br />
 	</c:forEach>
-	s
+
 	<br />
 
-	<c:forEach items="${pageStartList}" var="pageIndex" varStatus="status">
+	<c:forEach items="${pageNumberList}" var="pageIndex" varStatus="status">
 		<a href="list?start=${pageIndex}">${status.index +1 }</a>&nbsp; &nbsp;
 	</c:forEach>
 

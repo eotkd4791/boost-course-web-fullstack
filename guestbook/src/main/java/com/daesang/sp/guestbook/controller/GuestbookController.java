@@ -1,8 +1,5 @@
 package com.daesang.sp.guestbook.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.daesang.sp.guestbook.dto.Guestbook;
+import com.daesang.sp.guestbook.dto.GuestbookResponse;
 import com.daesang.sp.guestbook.service.GuestbookService;
 
 @Controller
@@ -23,25 +21,12 @@ public class GuestbookController {
 	GuestbookService guestbookService;
 	
 	@GetMapping(path="/list")
-	public String list(@RequestParam(name="start", required=false, defaultValue="0") int start, ModelMap model) {
-		
-		List<Guestbook> list = guestbookService.getGuestbooks(start);
-		
-		int count = guestbookService.getCount();
-		int pageCount = count / GuestbookService.LIMIT;
-		if(count % GuestbookService.LIMIT > 0) {
-			pageCount++;
-		}
-		
-		List<Integer> pageStartList = new ArrayList<>();
-		
-		for(int i=0; i<pageCount; i++) {
-			pageStartList.add(i * GuestbookService.LIMIT);
-		}
-		
-		model.addAttribute("list", list);
-		model.addAttribute("count", count);
-		model.addAttribute("pageStartList", pageStartList);
+	public String list(@RequestParam(name="start", required=false, defaultValue="0") int start, ModelMap model) {		
+		GuestbookResponse guestbookResponse = guestbookService.getGuestbooks(start);		
+			
+		model.addAttribute("guestbooks", guestbookResponse.getGuestbooks());
+		model.addAttribute("count", guestbookResponse.getGuestbookCount());
+		model.addAttribute("pageNumberList", guestbookResponse.getPageNumbers());
 		
 		return "list"; 	
 	}
