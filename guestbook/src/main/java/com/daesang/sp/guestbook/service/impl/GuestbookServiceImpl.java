@@ -18,11 +18,13 @@ import com.daesang.sp.guestbook.service.LogService;
 @Service
 public class GuestbookServiceImpl implements GuestbookService {
 	
-	@Autowired
-	private LogService logService;
+	private final LogService logService;
+	private final GuestbookDao guestbookDao;
 	
-	@Autowired
-	private GuestbookDao guestbookDao;
+	public GuestbookServiceImpl(LogService logService, GuestbookDao guestbookDao) {
+		this.logService = logService;
+		this.guestbookDao = guestbookDao;
+	}
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -68,9 +70,8 @@ public class GuestbookServiceImpl implements GuestbookService {
 	@Override
 	@Transactional
 	public Guestbook addGuestbook(Guestbook guestbook, String ip) {
-		Long id = guestbookDao.insert(guestbook);		
 		guestbook.setRegdate(new Date());
-		guestbook.setId(id);
+		guestbookDao.insert(guestbook);		
 		logService.add(ip, "insert");		
 		return guestbook;
 	}

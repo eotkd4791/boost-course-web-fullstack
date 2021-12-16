@@ -22,9 +22,9 @@ import com.daesang.sp.guestbook.dto.Guestbook;
 
 @Repository
 public class GuestbookDao {
-	private NamedParameterJdbcTemplate jdbc;
-	private SimpleJdbcInsert insertAction;
-	private RowMapper<Guestbook> rowMapper = BeanPropertyRowMapper.newInstance(Guestbook.class);
+	private final NamedParameterJdbcTemplate jdbc;
+	private final SimpleJdbcInsert insertAction;
+	private final RowMapper<Guestbook> rowMapper = BeanPropertyRowMapper.newInstance(Guestbook.class);
 	
 	public GuestbookDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);

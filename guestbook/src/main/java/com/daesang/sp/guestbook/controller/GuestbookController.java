@@ -17,8 +17,11 @@ import com.daesang.sp.guestbook.service.GuestbookService;
 @Controller
 public class GuestbookController {
 	
-	@Autowired
-	GuestbookService guestbookService;
+	private GuestbookService guestbookService;
+	
+	public GuestbookController(GuestbookService guestbookService) {
+		this.guestbookService = guestbookService;
+	}
 	
 	@GetMapping(path="/list")
 	public String list(@RequestParam(name="start", required=false, defaultValue="0") int start, ModelMap model) {		

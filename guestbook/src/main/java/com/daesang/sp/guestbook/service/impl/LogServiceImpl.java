@@ -1,5 +1,7 @@
 package com.daesang.sp.guestbook.service.impl;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ public class LogServiceImpl implements LogService {
 		Log log = new Log();
 		log.setIp(ip);
 		log.setMethod(method);
+		log.setRegdate(new Date());
 		logDao.insert(log);
 	}
 }
