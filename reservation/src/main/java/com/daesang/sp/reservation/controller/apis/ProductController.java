@@ -20,16 +20,9 @@ public class ProductController {
 	
 	@GetMapping
 	public Map<String, Object> getProducts(
-			@RequestParam(
-					name = "categoryId", required = false, defaultValue="0"		
-			) 
-			int categoryId,
-			@RequestParam(
-					name = "start", required = false, defaultValue = "0"
-			) 
-			int start
+			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
+			@RequestParam(name = "start", required = false, defaultValue = "0") int start
 	) {		
-		System.out.println(categoryId + " " + start);
 		return this.productService.getProducts(categoryId, start);
 	}
 }

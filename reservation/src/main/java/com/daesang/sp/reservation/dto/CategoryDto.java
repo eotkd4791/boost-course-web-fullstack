@@ -22,6 +22,4 @@ public class CategoryDto {
 	public int getCount() {
 		return count;
 	}
-	
-	
 }

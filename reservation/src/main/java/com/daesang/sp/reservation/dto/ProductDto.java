@@ -47,6 +47,4 @@ public class ProductDto {
 	public String getProductImageUrl() {
 		return productImageUrl;
 	}
-	
-	
 }

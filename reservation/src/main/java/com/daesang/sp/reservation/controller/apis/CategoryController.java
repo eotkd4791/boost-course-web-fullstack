@@ -16,7 +16,6 @@ public class CategoryController {
 	public CategoryController(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
-	
 
 	@GetMapping("/api/categories")
 	public Map<String, List<CategoryDto>> getCategories() {

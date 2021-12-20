@@ -89,6 +89,7 @@ public class ProductDao {
 		Map<String, Object> productListWithTotalCount = new HashMap<>();
 		productListWithTotalCount.put("totalCount", totalCount);
 		productListWithTotalCount.put("items", products);
+		
 		return productListWithTotalCount;
 	}
 	
