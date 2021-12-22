@@ -16,10 +16,11 @@ import com.daesang.sp.reservation.dto.PromotionDto;
 @Repository
 public class PromotionDao {
 	private final JdbcTemplate jdbcTemplate;
-	private final RowMapper<PromotionDto> promotionImageRowMapper = BeanPropertyRowMapper.newInstance(PromotionDto.class);
+	private final RowMapper<PromotionDto> promotionImageRowMapper;
 	
 	public PromotionDao(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		this.promotionImageRowMapper = BeanPropertyRowMapper.newInstance(PromotionDto.class);
 	}
 	
 	public List<PromotionDto> getPromotionImages() {
