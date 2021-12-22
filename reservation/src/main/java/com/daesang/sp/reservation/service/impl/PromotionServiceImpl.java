@@ -1,8 +1,11 @@
 package com.daesang.sp.reservation.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.daesang.sp.reservation.dao.PromotionDao;
+import com.daesang.sp.reservation.dto.PromotionDto;
 import com.daesang.sp.reservation.dto.response.PromotionResponseDto;
 import com.daesang.sp.reservation.service.PromotionService;
 
@@ -16,6 +19,7 @@ public class PromotionServiceImpl implements PromotionService {
 	
 	@Override
 	public PromotionResponseDto getPromotionImages() {
-		return new PromotionResponseDto(this.promotionDao.getPromotionImages());
+		List<PromotionDto> promotionImages = this.promotionDao.getPromotionImages();
+		return new PromotionResponseDto(promotionImages);
 	}
 }

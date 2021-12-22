@@ -12,45 +12,45 @@ import com.daesang.sp.reservation.service.ProductService;
 @Service
 public class ProductServiceImpl implements ProductService {
 	private final ProductDao productDao;
-	private final int ALL_CATEGORY;
 	
 	public ProductServiceImpl(ProductDao productDao) {
 		this.productDao = productDao;
-		this.ALL_CATEGORY = 0;
 	}
 	
 	@Override
+	@Transactional
 	public ProductResponseDto getProducts(int categoryId, int start) {
-		if(categoryId == ALL_CATEGORY) {
+		if(categoryId == CATEGORY_ALL) {
 			return this.getProducts(start); 
 		}
 		return new ProductResponseDto(
-				this.getProductCountByCategoryId(categoryId),
-				this.getProductListByCategoryId(categoryId, start)
+				this.getProductCount(categoryId),
+				this.getProductByCategoryId(categoryId, start)
 		); 
 	}
 	
 	@Override
+	@Transactional
 	public ProductResponseDto getProducts(int start) {
 		return new ProductResponseDto(
-				this.getAllCategoriesTotalCount(),
-				this.getProductListByAllCategories(start)
+				this.getTotalCount(),
+				this.getProductAll(start)
 		);
 	}
-	
-	private int getAllCategoriesTotalCount() {
+
+	private int getTotalCount() {
 		return productDao.getProductCount();
 	}
 	
-	private int getProductCountByCategoryId(int categoryId) {
+	private int getProductCount(int categoryId) {
 		return productDao.getProductCount(categoryId);	
 	}
 	
-	private List<ProductDto> getProductListByAllCategories(int start) {
+	private List<ProductDto> getProductAll(int start) {
 		return productDao.getProducts(start);
 	}
 	
-	private List<ProductDto> getProductListByCategoryId(int categoryId, int start) {
+	private List<ProductDto> getProductByCategoryId(int categoryId, int start) {
 		return productDao.getProducts(categoryId, start);
 	}
 }

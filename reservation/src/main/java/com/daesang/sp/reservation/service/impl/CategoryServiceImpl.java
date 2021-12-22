@@ -1,8 +1,11 @@
 package com.daesang.sp.reservation.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.daesang.sp.reservation.dao.CategoryDao;
+import com.daesang.sp.reservation.dto.CategoryDto;
 import com.daesang.sp.reservation.dto.response.CategoryResponseDto;
 import com.daesang.sp.reservation.service.CategoryService;
 
@@ -16,6 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public CategoryResponseDto getCategories() {
-		return new CategoryResponseDto(categoryDao.getCategories());
+		List<CategoryDto> categories = categoryDao.getCategories();
+		return new CategoryResponseDto(categories);
 	}
 }

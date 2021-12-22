@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.daesang.sp.reservation.constant.ServerConstant;
+import static com.daesang.sp.reservation.utils.Constants.CACHE_PERIOD;
 
 @Configuration
 @EnableWebMvc
@@ -23,16 +23,16 @@ public class WebMvcContextConfiguration extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/assets/**")
 				.addResourceLocations("classpath:/META-INF/resources/webjars/")
-				.setCachePeriod(ServerConstant.CACHE_PERIOD);
+				.setCachePeriod(CACHE_PERIOD);
 		registry.addResourceHandler("/img/**")
 				.addResourceLocations("/img/")
-				.setCachePeriod(ServerConstant.CACHE_PERIOD);
+				.setCachePeriod(CACHE_PERIOD);
 		registry.addResourceHandler("/css/**")
 				.addResourceLocations("/css/")
-				.setCachePeriod(ServerConstant.CACHE_PERIOD);
+				.setCachePeriod(CACHE_PERIOD);
 		registry.addResourceHandler("/js/**")
 				.addResourceLocations("/js/")
-				.setCachePeriod(ServerConstant.CACHE_PERIOD);
+				.setCachePeriod(CACHE_PERIOD);
 	}
 	
 	@Override

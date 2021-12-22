@@ -15,7 +15,7 @@ public class PageController {
 	}
 	
 	@GetMapping("/detail")
-	public String getDefaultPage(
+	public String getDetailPage(
 			@RequestParam(name = "id", required = false, defaultValue = "0") int id,
 			ModelMap model	
 	) {

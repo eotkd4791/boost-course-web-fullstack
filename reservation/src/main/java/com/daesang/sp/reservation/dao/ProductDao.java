@@ -5,8 +5,6 @@ import static com.daesang.sp.reservation.dao.sqls.ProductDaoSql.SELECT_ALL_PRODU
 import static com.daesang.sp.reservation.dao.sqls.ProductDaoSql.SELECT_PRODUCTS_BY_CATEGORY_ID;
 import static com.daesang.sp.reservation.dao.sqls.ProductDaoSql.SELECT_PRODUCT_COUNT_BY_CATEGORY_ID;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +12,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -24,11 +23,13 @@ import com.daesang.sp.reservation.dto.ProductDto;
 @Repository
 public class ProductDao {
 	private final JdbcTemplate jdbcTemplate;
-	private final NamedParameterJdbcTemplate namedParameterJdbcTemplate; 
+	private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	private final RowMapper<ProductDto> productRowMapper;
 	
 	public ProductDao(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+		this.productRowMapper = BeanPropertyRowMapper.newInstance(ProductDto.class);
 	}
 	
 	public List<ProductDto> getProducts(int categoryId, int start) {
@@ -36,33 +37,21 @@ public class ProductDao {
 		params.put("categoryId", categoryId);
 		params.put("start", start);
 		
-		return this.namedParameterJdbcTemplate.query(SELECT_PRODUCTS_BY_CATEGORY_ID, params, new ProductRowMapper()); 
+		return this.namedParameterJdbcTemplate.query(SELECT_PRODUCTS_BY_CATEGORY_ID, params, productRowMapper); 
 	}
 	
 	public List<ProductDto> getProducts(int start) {
 		Map<String, Integer> params = new HashMap<>();
 		params.put("start", start);
 		
-		return this.namedParameterJdbcTemplate.query(SELECT_ALL_PRODUCTS, params, new ProductRowMapper());
-	}
-	
-	private class ProductRowMapper implements RowMapper<ProductDto> {
-		@Override
-		public ProductDto mapRow(ResultSet rs, int rowNum) throws SQLException {
-			return new ProductDto(
-					rs.getInt("display_info_id"),
-					rs.getInt("product_id"),
-					rs.getString("product_description"),
-					rs.getString("place_name"),
-					rs.getString("product_content"),
-					rs.getString("product_image_url")
-			);
-		}
+		return this.namedParameterJdbcTemplate
+				.query(SELECT_ALL_PRODUCTS, params, productRowMapper);
 	}
 	
 	public int getProductCount(int categoryId) {
 		Map<String, Integer> params = Collections.singletonMap("categoryId", categoryId);
-		return this.namedParameterJdbcTemplate.queryForObject(SELECT_PRODUCT_COUNT_BY_CATEGORY_ID, params, Integer.class);
+		return this.namedParameterJdbcTemplate
+				.queryForObject(SELECT_PRODUCT_COUNT_BY_CATEGORY_ID, params, Integer.class);
 	}
 	
 	public int getProductCount() {

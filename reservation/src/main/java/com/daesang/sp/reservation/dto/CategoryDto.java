@@ -1,9 +1,11 @@
 package com.daesang.sp.reservation.dto;
 
 public class CategoryDto {
-	private final int id;
-	private final String name;
-	private final int count;
+	private int id;
+	private String name;
+	private int count;
+	
+	public CategoryDto() {}
 	
 	public CategoryDto(int id, String name, int count) {
 		this.id = id;
@@ -15,11 +17,23 @@ public class CategoryDto {
 		return id;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public int getCount() {
 		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 }

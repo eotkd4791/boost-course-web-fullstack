@@ -1,12 +1,14 @@
 package com.daesang.sp.reservation.dto;
 
 public class ProductDto {
-	private final int displayInfoId;
-	private final int productId;
-	private final String productDescription;
-	private final String placeName;
-	private final String productContent;
-	private final String productImageUrl;
+	private int displayInfoId;
+	private int productId;
+	private String productDescription;
+	private String placeName;
+	private String productContent;
+	private String productImageUrl;
+	
+	public ProductDto() {}
 	
 	public ProductDto(
 			int displayInfoId, 
@@ -28,23 +30,47 @@ public class ProductDto {
 		return displayInfoId;
 	}
 
+	public void setDisplayInfoId(int displayInfoId) {
+		this.displayInfoId = displayInfoId;
+	}
+
 	public int getProductId() {
 		return productId;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 
 	public String getProductDescription() {
 		return productDescription;
 	}
 
+	public void setProductDescription(String productDescription) {
+		this.productDescription = productDescription;
+	}
+
 	public String getPlaceName() {
 		return placeName;
+	}
+
+	public void setPlaceName(String placeName) {
+		this.placeName = placeName;
 	}
 
 	public String getProductContent() {
 		return productContent;
 	}
 
+	public void setProductContent(String productContent) {
+		this.productContent = productContent;
+	}
+
 	public String getProductImageUrl() {
 		return productImageUrl;
+	}
+
+	public void setProductImageUrl(String productImageUrl) {
+		this.productImageUrl = productImageUrl;
 	}
 }
