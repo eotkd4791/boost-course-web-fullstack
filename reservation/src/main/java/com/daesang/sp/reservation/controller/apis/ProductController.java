@@ -1,12 +1,11 @@
 package com.daesang.sp.reservation.controller.apis;
 
-import java.util.Map;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.daesang.sp.reservation.dto.response.ProductResponseDto;
 import com.daesang.sp.reservation.service.ProductService;
 
 @RestController
@@ -19,10 +18,10 @@ public class ProductController {
 	}
 	
 	@GetMapping
-	public Map<String, Object> getProducts(
-			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
-			@RequestParam(name = "start", required = false, defaultValue = "0") int start
-	) {		
+	public ProductResponseDto getProducts(
+			@RequestParam(required = false, defaultValue = "0") int categoryId,
+			@RequestParam(defaultValue = "0") int start
+	) {
 		return this.productService.getProducts(categoryId, start);
-	}
+	}	
 }

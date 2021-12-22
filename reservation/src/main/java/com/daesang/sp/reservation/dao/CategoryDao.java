@@ -22,7 +22,11 @@ public class CategoryDao {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public class CategoryRowMapper implements RowMapper<CategoryDto> {
+	public List<CategoryDto> getCategories() {
+		return this.jdbcTemplate.query(SELECT_ALL_CATEGORY, new CategoryRowMapper());
+	}	  
+	
+	private class CategoryRowMapper implements RowMapper<CategoryDto> {
 		@Override
 		public CategoryDto mapRow(ResultSet rs, int rowNum) throws SQLException {
 			return new CategoryDto(
@@ -31,12 +35,5 @@ public class CategoryDao {
 					rs.getInt("count")
 			);
 		}	
-	}
-	
-	public List<CategoryDto> getCategories() {
-		return this.jdbcTemplate.query(
-				SELECT_ALL_CATEGORY,
-				new CategoryRowMapper()
-		);
-	}	  
+	}	
 }

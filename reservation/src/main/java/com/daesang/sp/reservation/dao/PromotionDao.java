@@ -22,7 +22,11 @@ public class PromotionDao {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public class PromotionRowMapper implements RowMapper<PromotionDto> {
+	public List<PromotionDto> getPromotionImages() {
+		return this.jdbcTemplate.query(SELECT_ALL_PROMOTION_IMAGE, new PromotionRowMapper());
+	}	  
+	
+	private class PromotionRowMapper implements RowMapper<PromotionDto> {
 		@Override
 		public PromotionDto mapRow(ResultSet rs, int rowNum) throws SQLException {
 			return new PromotionDto(
@@ -35,11 +39,4 @@ public class PromotionDao {
 			);
 		}
 	}
- 	
-	public List<PromotionDto> getPromotionImages() {
-		return this.jdbcTemplate.query(
-				SELECT_ALL_PROMOTION_IMAGE,
-				new PromotionRowMapper()
-		);
-	}	  
 }
