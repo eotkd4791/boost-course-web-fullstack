@@ -2,7 +2,7 @@ function renderPromotionCarousel() {
 	const promotionContainer = document.querySelector('.visual_img');
 	
 	httpRequest('GET', '/promotions', response => {	
-		renderPromotionImages(JSON.parse(response).items);
+		renderPromotionImages(JSON.parse(response).promotions);
 		rotatePromotion();	
 	});
 	
@@ -48,7 +48,7 @@ function renderCategories() {
 	let activatedTabIndex = 0;
 	
 	httpRequest('GET', '/categories', response => {
-		renderCategoryTabs(JSON.parse(response).items);
+		renderCategoryTabs(JSON.parse(response).categories);
 		activateTab(0);
 		renderProducts(0);
 		categoryContainer.addEventListener('click', onClickCategoryTabs);
@@ -101,9 +101,9 @@ function renderProducts(start = 0) {
 	const categoryId = parseInt(document.querySelector('.anchor.active').parentElement.dataset.categoryid);
 	
 	httpRequest('GET', `/products?categoryId=${categoryId}&start=${start}`, response => {
-		const { totalCount, items } = JSON.parse(response);
+		const { totalCount, products } = JSON.parse(response);
 		updateDisplayInfoCount(totalCount);	
-		renderDisplayItems(items);
+		renderDisplayItems(products);
 	});
 	
 	function renderDisplayItems(products) {
