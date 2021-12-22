@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Naver booking Icons";
-    src: url('../font/Naver-booking-Icons.woff') format('woff');
+    src: url('../assets/font/Naver-booking-Icons.woff') format('woff');
     font-weight: 400;
     font-style: normal
 }
@@ -11,7 +11,7 @@
 
 @font-face {
     font-family: "Naver Icons";
-    src: url('../font/Naver-Icons.woff') format('woff');
+    src: url('./Naver-Icons.woff') format('woff');
     font-weight: 400;
     font-style: normal
 }
@@ -104,14 +104,14 @@
     font-family: NanumGothicWebR;
     font-style: normal;
     font-weight: 400;
-    src: url('../font/NanumGothicRegular.woff') format('woff')
+    src: url('../assets/font/NanumGothicRegular.woff') format('woff')
 }
 
 @font-face {
     font-family: NanumGothicWebB;
     font-style: normal;
     font-weight: 400;
-    src: url('../font/NanumGothicBold.woff') format('woff')
+    src: url('../assets/font/NanumGothicBold.woff') format('woff')
 }
 
 body,html {
