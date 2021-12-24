@@ -106,5 +106,5 @@ public class DisplayInfoImageDto {
 	
 	public void setCreateDate(LocalDateTime createDate) {
 		this.createDate = createDate;
-	}	
+	}
 }

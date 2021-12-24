@@ -18,7 +18,7 @@ public class ProductDetailDaoSql {
 			+ " ,di.email"
 			+ " ,di.create_date"
 			+ " ,di.modify_date"
-			+ " ,FROM display_info di"
+			+ " FROM display_info di"
 			+ " INNER JOIN product p"
 			+ " ON p.id = di.product_id"
 			+ " INNER JOIN category c"
@@ -43,8 +43,9 @@ public class ProductDetailDaoSql {
 			+ " ON pi.file_id = fi.id"
 			+ " INNER JOIN display_info di"
 			+ " ON di.product_id = p.id"
-			+ " WHERE di.id = :displayInfoId"
-			+ " AND pi.type = 'ma';";
+			+ " WHERE di.product_id = :displayInfoId"
+			+ " AND pi.type != 'th'"
+			+ " LIMIT 2;";
 	
 	public static final String SELECT_ONE_DISPLAY_INFO_IMAGE_BY_DISPLAY_INFO_ID = "SELECT"
 			+ " dii.id AS display_info_image_id"
@@ -63,7 +64,7 @@ public class ProductDetailDaoSql {
 			+ " ON dii.file_id = fi.id"
 			+ " WHERE di.id = :displayInfoId;";
 	
-	public static final String SELECT_ALL_COMMENTS_BY_DISPLAY_INFO_ID ="SELECT"
+	public static final String SELECT_ALL_COMMENTS_BY_DISPLAY_INFO_ID = "SELECT"
 			+ " ruc.id AS comment_id"
 			+ " ,di.product_id"
 			+ " ,ri.id AS reservation_info_id"
@@ -99,10 +100,10 @@ public class ProductDetailDaoSql {
 			+ " INNER JOIN file_info fi"
 			+ " ON fi.id = ruci.file_id"
 			+ " INNER JOIN reservation_user_comment ruc"
-			+ " ON ruci.reservation_user_comment_id =ruc.id;";
+			+ " ON ruci.reservation_user_comment_id = ruc.id;";
 	
 	public static final String SELECT_AVERAGE_BY_DISPLAY_INFO_ID = "SELECT"
-			+ " AVG(score) AS average_score"
+			+ " IFNULL(AVG(score), 0) AS average_score"
 			+ " FROM reservation_user_comment ruc"
 			+ " INNER JOIN reservation_info ri"
 			+ " ON ri.id = ruc.reservation_info_id"
@@ -122,5 +123,6 @@ public class ProductDetailDaoSql {
 			+ " INNER JOIN display_info di"
 			+ " ON di.product_id = p.id "
 			+ " INNER JOIN product_price pp"
-			+ " ON pp.product_id = p.id;";	
+			+ " ON pp.product_id = p.id"
+			+ " WHERE di.id = :displayInfoId;";	
 }

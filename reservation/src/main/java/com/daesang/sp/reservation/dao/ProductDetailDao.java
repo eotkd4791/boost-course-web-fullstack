@@ -30,6 +30,7 @@ import com.daesang.sp.reservation.dto.ProductPriceDto;
 public class ProductDetailDao {
 	private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	private final RowMapper<DisplayInfoDto> displayInfoDtoRowMapper;
+	private final RowMapper<DisplayInfoImageDto> displayInfoImageRowMapper;
 	private final RowMapper<CommentDto> commentRowMapper;
 	private final RowMapper<CommentImageDto> commentImageRowMapper;
 	private final RowMapper<ProductImageDto> productImageRowMapper;
@@ -39,6 +40,7 @@ public class ProductDetailDao {
 		this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
 		
 		this.displayInfoDtoRowMapper = BeanPropertyRowMapper.newInstance(DisplayInfoDto.class);
+		this.displayInfoImageRowMapper = BeanPropertyRowMapper.newInstance(DisplayInfoImageDto.class);
 		this.commentRowMapper = BeanPropertyRowMapper.newInstance(CommentDto.class);
 		this.commentImageRowMapper = BeanPropertyRowMapper.newInstance(CommentImageDto.class);
 		this.productImageRowMapper = BeanPropertyRowMapper.newInstance(ProductImageDto.class);
@@ -71,7 +73,7 @@ public class ProductDetailDao {
 		return this.namedParameterJdbcTemplate.queryForObject(
 				SELECT_ONE_DISPLAY_INFO_IMAGE_BY_DISPLAY_INFO_ID, 
 				param,
-				DisplayInfoImageDto.class
+				displayInfoImageRowMapper
 		);
 	}
 	

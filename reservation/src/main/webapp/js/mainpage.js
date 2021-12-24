@@ -1,3 +1,12 @@
+window.addEventListener("DOMContentLoaded", initialize);
+
+function initialize() {
+	renderPromotionCarousel();	
+	renderCategories();
+	renderMoreProducts(0);
+}
+
+
 function renderPromotionCarousel() {
 	const promotionContainer = document.querySelector('.visual_img');
 	
@@ -159,13 +168,3 @@ function hideMoreButton() {
 	const buttonToGetMoreProducts = document.querySelector('.more > .btn');
 	buttonToGetMoreProducts.style.display = 'none';
 }
-
-
-
-function initialize() {
-	renderPromotionCarousel();	
-	renderCategories();
-	renderMoreProducts(0);
-}
-
-window.addEventListener("DOMContentLoaded", initialize);

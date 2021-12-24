@@ -104,14 +104,14 @@
     font-family: NanumGothicWebR;
     font-style: normal;
     font-weight: 400;
-    src: url('../assets/font/NanumGothicRegular.woff') format('woff')
+    src: url('assets/font/NanumGothicRegular.woff') format('woff')
 }
 
 @font-face {
     font-family: NanumGothicWebB;
     font-style: normal;
     font-weight: 400;
-    src: url('../assets/font/NanumGothicBold.woff') format('woff')
+    src: url('assets/font/NanumGothicBold.woff') format('woff')
 }
 
 body,html {

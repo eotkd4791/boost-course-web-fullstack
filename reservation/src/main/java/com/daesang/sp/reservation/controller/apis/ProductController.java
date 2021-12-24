@@ -1,5 +1,7 @@
 package com.daesang.sp.reservation.controller.apis;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +33,9 @@ public class ProductController {
 	}
 	
 	@GetMapping("/{displayInfoId}")
-	public ProductDetailResponseDto getProductDetail(@PathVariable int displayInfoId) {
-		return this.productDetailService.getProductDetail(displayInfoId);
+	public ProductDetailResponseDto getProductDetail(@PathVariable int displayInfoId, HttpSession session) {
+		ProductDetailResponseDto productDetailResponse = this.productDetailService.getProductDetail(displayInfoId);
+		session.setAttribute("productDetail", productDetailResponse);
+		return productDetailResponse;
 	}
 }

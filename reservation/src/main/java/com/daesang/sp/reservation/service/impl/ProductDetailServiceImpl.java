@@ -48,11 +48,11 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 		List<CommentImageDto> commentImages = this.productDetailDao
 				.getCommentImages(displayInfoId);
 		
-		List<CommentDto> CommentMappedWithImages = mapCommentImageToComment(comments, commentImages);
+		List<CommentDto> commentsMappedWithImages = this.mapCommentImageToComment(comments, commentImages);
 		
 		return new ProductDetailResponseDto(
 				averageScore,
-				CommentMappedWithImages,
+				commentsMappedWithImages,
 				displayInfo,
 				displayInfoImage,
 				productImages,
@@ -64,7 +64,7 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 		for(CommentDto comment : comments) {
 			List<CommentImageDto> commentImagesWithMatchedCommentId = new ArrayList<>();
 			int commentId = comment.getCommentId();
-			
+		
 			for(CommentImageDto commentImage : commentImages) {
 				int commentIdByCommentImage = commentImage.getReservationUserCommentId();
 				
@@ -74,7 +74,6 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 			}
 			comment.setCommentImages(commentImagesWithMatchedCommentId);
 		}
-		
 		return comments;
 	}
 }
