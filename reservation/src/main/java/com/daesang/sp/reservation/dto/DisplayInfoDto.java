@@ -18,43 +18,6 @@ public class DisplayInfoDto {
 	private String telephone;
 	private LocalDateTime createDate;
 	private LocalDateTime modifyDate;
-	
-	public DisplayInfoDto() {}
-	
-	public DisplayInfoDto(
-			int displayInfoId, 
-			int categoryId, 
-			int productId, 
-			String categoryName, 
-			String email,
-			String homepage, 
-			String openingHours, 
-			String placeLot, 
-			String placeStreet, 
-			String productContent,
-			String productDescription, 
-			String productEvent, 
-			String telephone, 
-			LocalDateTime createDate,
-			LocalDateTime modifyDate
-	) {
-		
-		this.displayInfoId = displayInfoId;
-		this.categoryId = categoryId;
-		this.productId = productId;
-		this.categoryName = categoryName;
-		this.email = email;
-		this.homepage = homepage;
-		this.openingHours = openingHours;
-		this.placeLot = placeLot;
-		this.placeStreet = placeStreet;
-		this.productContent = productContent;
-		this.productDescription = productDescription;
-		this.productEvent = productEvent;
-		this.telephone = telephone;
-		this.createDate = createDate;
-		this.modifyDate = modifyDate;
-	}
 
 	public int getDisplayInfoId() {
 		return displayInfoId;

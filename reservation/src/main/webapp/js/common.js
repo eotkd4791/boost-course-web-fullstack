@@ -8,5 +8,13 @@ function httpRequest(method, url, callback, payload) {
 		}
 	};	
 	xhr.open(method, baseURL + url);
-	xhr.send(payload && JSON.stringify(payload));
+	
+	
+	if(payload instanceof FormData) {
+		xhr.send(payload);
+	} else if(payload) {
+		xhr.send(JSON.stringify(payload));			
+	} else {
+		xhr.send();
+	}
 }

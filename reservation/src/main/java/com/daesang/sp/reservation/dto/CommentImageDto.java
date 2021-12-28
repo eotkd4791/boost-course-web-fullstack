@@ -13,29 +13,6 @@ public class CommentImageDto {
 	private LocalDateTime createDate;
 	private LocalDateTime modifyDate;
 	
-	public CommentImageDto() {}
-	public CommentImageDto(
-			int reservationUserCommentId, 
-			int imageId, 
-			int fileId, 
-			int reservationInfoId,
-			String contentType, 
-			String saveFileName, 
-			boolean deleteFlag, 
-			LocalDateTime createDate,
-			LocalDateTime modifyDate
-	) {
-		this.reservationUserCommentId = reservationUserCommentId;
-		this.imageId = imageId;
-		this.fileId = fileId;
-		this.reservationInfoId = reservationInfoId;
-		this.contentType = contentType;
-		this.saveFileName = saveFileName;
-		this.deleteFlag = deleteFlag;
-		this.createDate = createDate;
-		this.modifyDate = modifyDate;
-	}
-	
 	public int getReservationUserCommentId() {
 		return reservationUserCommentId;
 	}

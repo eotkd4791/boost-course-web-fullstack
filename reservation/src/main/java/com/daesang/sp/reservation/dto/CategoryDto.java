@@ -4,14 +4,6 @@ public class CategoryDto {
 	private int id;
 	private String name;
 	private int count;
-	
-	public CategoryDto() {}
-	
-	public CategoryDto(int id, String name, int count) {
-		this.id = id;
-		this.name = name;
-		this.count = count;
-	}
 
 	public int getId() {
 		return id;

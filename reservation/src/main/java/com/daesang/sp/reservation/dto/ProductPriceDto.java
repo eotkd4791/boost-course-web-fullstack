@@ -9,26 +9,6 @@ public class ProductPriceDto {
 	private String priceTypeName;
 	private LocalDateTime createDate;
 	private LocalDateTime modifyDate;
-	
-	public ProductPriceDto() {}
-	
-	public ProductPriceDto(
-			int productPriceId, 
-			int productId, 
-			int price, 
-			int discountRate, 
-			String priceTypeName,
-			LocalDateTime createDate, 
-			LocalDateTime modifyDate
-	) {
-		this.productPriceId = productPriceId;
-		this.productId = productId;
-		this.price = price;
-		this.discountRate = discountRate;
-		this.priceTypeName = priceTypeName;
-		this.createDate = createDate;
-		this.modifyDate = modifyDate;
-	}
 
 	public int getProductPriceId() {
 		return productPriceId;

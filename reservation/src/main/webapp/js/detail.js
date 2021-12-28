@@ -23,11 +23,11 @@ function onLoadHandler(responseString) {
 		averageScore
 	} = JSON.parse(responseString);
 	
-	console.log(JSON.parse(responseString));
 	renderImages(productImages);
 	stylePageNum(productImages);
 	hideImageChangeButton(productImages);
 	toggleImageChangeButton();
+	onClickChangeThumbnail();
 	renderTitle(displayInfo.productDescription);
 	renderSummaryDetail();
 	onClickMoreButton();
@@ -38,6 +38,7 @@ function onLoadHandler(responseString) {
 	changeDetailInfoTab();
 	renderDetailProductInfo();
 	renderLocationInfo();
+	onClickMoveToMyReservationPage();
 	
 	function renderImages(images) {
 		const swiper = document.querySelector('.visual_img.detail_swipe');
@@ -68,6 +69,29 @@ function onLoadHandler(responseString) {
 		
 		prev.classList.toggle('off');
 		next.classList.toggle('off');
+	}
+	
+	function onClickChangeThumbnail() {
+		document.querySelector('.nxt').addEventListener('click', function() {
+			const thumbnail = document.querySelector('.visual_img.detail_swipe');
+			const pageNumber = document.querySelector('.figure_pagination').firstElementChild;
+			if(pageNumber.textContent === '1') {
+				thumbnail.style.transform = 'translateX(-414px)';
+				thumbnail.style.transition = '0.3s';
+				pageNumber.textContent = '2';
+			}
+		});
+		
+		document.querySelector('.prev').addEventListener('click', function() {
+			const thumbnail = document.querySelector('.visual_img.detail_swipe');
+			const pageNumber = document.querySelector('.figure_pagination').firstElementChild;
+			if(pageNumber.textContent === '2') {
+				thumbnail.style.transform = 'translateX(0px)';
+				thumbnail.style.transition = '0.3s';
+				pageNumber.textContent = '1';
+			}	
+		});
+		
 	}
 	
 	function checkIfExistTypeOf(images, type) {
@@ -156,10 +180,10 @@ function onLoadHandler(responseString) {
 		const detailInfoWrapper = document.querySelector('.detail_area_wrap');
 		const locationInfoWrapper = document.querySelector('.detail_location');
 		
-		tabContainer.addEventListener('click', function(event) {
+		tabContainer.addEventListener('click', function() {
 			detailInfoWrapper.classList.toggle('hide');
 			locationInfoWrapper.classList.toggle('hide');
-			[].forEach.call(this.children, (li, listIndex) => {
+			[].forEach.call(this.children, li => {
 				li.classList.toggle('active');
 				li.firstElementChild.classList.toggle('active');
 			});
@@ -182,6 +206,12 @@ function onLoadHandler(responseString) {
 												.replace('{placeStreet}', displayInfo.placeStreet)
 												.replace('{placeLot}', displayInfo.placeLot)
 												.split('{telephone}').join(displayInfo.telephone);
+	}
+	
+	function onClickMoveToMyReservationPage() {
+		document.querySelector('.bk_btn').addEventListener('click', function() {
+			location.href = './reserve';
+		});
 	}
 }
 

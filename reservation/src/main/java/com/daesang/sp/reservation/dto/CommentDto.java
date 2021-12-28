@@ -16,36 +16,6 @@ public class CommentDto {
 	private LocalDateTime createDate;
 	private LocalDateTime modifyDate;
 	private LocalDateTime reservationDate;
-	
-	public CommentDto() {}
-	
-	public CommentDto(
-			int commentId, 
-			int productId, 
-			int reservationInfoId, 
-			int score, 
-			String comment,
-			String reservationEmail, 
-			String reservationName, 
-			String reservationTelephone,
-			List<CommentImageDto> commentImages, 
-			LocalDateTime createDate, 
-			LocalDateTime modifyDate,
-			LocalDateTime reservationDate
-	) {
-		this.commentId = commentId;
-		this.productId = productId;
-		this.reservationInfoId = reservationInfoId;
-		this.score = score;
-		this.comment = comment;
-		this.reservationEmail = reservationEmail;
-		this.reservationName = reservationName;
-		this.reservationTelephone = reservationTelephone;
-		this.commentImages = commentImages;
-		this.createDate = createDate;
-		this.modifyDate = modifyDate;
-		this.reservationDate = reservationDate;
-	}
 
 	public int getCommentId() {
 		return commentId;

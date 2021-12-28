@@ -19,7 +19,10 @@ public class ProductController {
 	private final ProductService productService;
 	private final ProductDetailService productDetailService;
 	
-	public ProductController(ProductService productService, ProductDetailService productDetailService) {
+	public ProductController(
+			ProductService productService, 
+			ProductDetailService productDetailService
+	) {
 		this.productService = productService;
 		this.productDetailService = productDetailService;
 	}
@@ -33,9 +36,13 @@ public class ProductController {
 	}
 	
 	@GetMapping("/{displayInfoId}")
-	public ProductDetailResponseDto getProductDetail(@PathVariable int displayInfoId, HttpSession session) {
+	public ProductDetailResponseDto getProductDetail(
+			@PathVariable int displayInfoId, 
+			HttpSession session
+	) {
 		ProductDetailResponseDto productDetailResponse = this.productDetailService.getProductDetail(displayInfoId);
 		session.setAttribute("productDetail", productDetailResponse);
+		
 		return productDetailResponse;
 	}
 }

@@ -1,10 +1,10 @@
 package com.daesang.sp.reservation.dao;
 
-import static com.daesang.sp.reservation.dao.sqls.ProductDetailDaoSql.SELECT_AVERAGE_BY_DISPLAY_INFO_ID;
 import static com.daesang.sp.reservation.dao.sqls.ProductDetailDaoSql.SELECT_ALL_COMMENTS_BY_DISPLAY_INFO_ID;
-import static com.daesang.sp.reservation.dao.sqls.ProductDetailDaoSql.SELECT_SOME_COMMENT_IMAGES_BY_DISPLAY_INFO_ID;
+import static com.daesang.sp.reservation.dao.sqls.ProductDetailDaoSql.SELECT_AVERAGE_BY_DISPLAY_INFO_ID;
 import static com.daesang.sp.reservation.dao.sqls.ProductDetailDaoSql.SELECT_ONE_DISPLAY_INFO;
 import static com.daesang.sp.reservation.dao.sqls.ProductDetailDaoSql.SELECT_ONE_DISPLAY_INFO_IMAGE_BY_DISPLAY_INFO_ID;
+import static com.daesang.sp.reservation.dao.sqls.ProductDetailDaoSql.SELECT_SOME_COMMENT_IMAGES_BY_DISPLAY_INFO_ID;
 import static com.daesang.sp.reservation.dao.sqls.ProductDetailDaoSql.SELECT_SOME_PRODUCT_IMAGES_BY_DISPLAY_INFO_ID;
 import static com.daesang.sp.reservation.dao.sqls.ProductDetailDaoSql.SELECT_SOME_PRODUCT_PRICES_BY_DISPLAY_INFO_ID;
 

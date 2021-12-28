@@ -8,17 +8,6 @@ public class PromotionDto {
 	private String placeName;
 	private String description;
 	
-	public PromotionDto() {}
-	
-	public PromotionDto(int id, int productId, String productImageUrl, String title, String placeName, String description) {
-		this.id = id;
-		this.productId = productId;
-		this.productImageUrl = productImageUrl;
-		this.title = title;
-		this.placeName = placeName;
-		this.description = description;
-	}
-
 	public int getId() {
 		return id;
 	}

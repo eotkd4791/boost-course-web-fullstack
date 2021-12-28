@@ -13,32 +13,6 @@ public class ProductImageDto {
 	private boolean deleteFlag;
 	private LocalDateTime createDate;
 	private LocalDateTime modifyDate;
-	
-	public ProductImageDto() {}
-	
-	public ProductImageDto(
-			int productImageId, 
-			int productId, 
-			int fileInfoId,
-			String fileName, 
-			String saveFileName,
-			String contentType, 
-			String type, 
-			boolean deleteFlag, 
-			LocalDateTime createDate, 
-			LocalDateTime modifyDate
-	) {
-		this.productImageId = productImageId;
-		this.productId = productId;
-		this.fileInfoId = fileInfoId;
-		this.fileName = fileName;
-		this.saveFileName = saveFileName;
-		this.contentType = contentType;
-		this.type = type;
-		this.deleteFlag = deleteFlag;
-		this.createDate = createDate;
-		this.modifyDate = modifyDate;
-	}
 
 	public int getProductImageId() {
 		return productImageId;

@@ -7,24 +7,6 @@ public class ProductDto {
 	private String placeName;
 	private String productContent;
 	private String productImageUrl;
-	
-	public ProductDto() {}
-	
-	public ProductDto(
-			int displayInfoId, 
-			int productId, 
-			String productDescription, 
-			String placeName, 
-			String productContent, 
-			String productImageUrl
-	) {
-		this.displayInfoId = displayInfoId;
-		this.productId = productId;
-		this.productDescription = productDescription;
-		this.placeName = placeName;
-		this.productContent = productContent;
-		this.productImageUrl = productImageUrl;
-	}
 
 	public int getDisplayInfoId() {
 		return displayInfoId;

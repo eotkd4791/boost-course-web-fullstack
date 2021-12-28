@@ -17,7 +17,7 @@ public class CategoryController {
 	}
 
 	@GetMapping
-	public CategoryResponseDto getCategories() {
+	public CategoryResponseDto getAllCategories() {
 		return categoryService.getCategories();
 	}
 }

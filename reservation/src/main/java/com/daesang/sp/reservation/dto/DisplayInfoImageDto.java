@@ -13,29 +13,6 @@ public class DisplayInfoImageDto {
 	private LocalDateTime modifyDate;
 	private LocalDateTime createDate;
 	
-	public DisplayInfoImageDto() {}
-	public DisplayInfoImageDto(
-			int displayInfoImageId, 
-			int displayInfoId, 
-			int fileId, 
-			String fileName, 
-			String saveFileName,
-			String contentType, 
-			boolean deleteFlag, 
-			LocalDateTime modifyDate, 
-			LocalDateTime createDate
-	) {	
-		this.displayInfoImageId = displayInfoImageId;
-		this.displayInfoId = displayInfoId;
-		this.fileId = fileId;
-		this.fileName = fileName;
-		this.saveFileName = saveFileName;
-		this.contentType = contentType;
-		this.deleteFlag = deleteFlag;
-		this.modifyDate = modifyDate;
-		this.createDate = createDate;
-	}
-	
 	public int getDisplayInfoImageId() {
 		return displayInfoImageId;
 	}
