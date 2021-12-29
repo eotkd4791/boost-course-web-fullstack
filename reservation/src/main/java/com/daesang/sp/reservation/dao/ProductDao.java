@@ -37,7 +37,8 @@ public class ProductDao {
 		params.put("categoryId", categoryId);
 		params.put("start", start);
 		
-		return this.namedParameterJdbcTemplate.query(SELECT_PRODUCTS_BY_CATEGORY_ID, params, this.productRowMapper); 
+		return this.namedParameterJdbcTemplate
+				.query(SELECT_PRODUCTS_BY_CATEGORY_ID, params, this.productRowMapper); 
 	}
 	
 	public List<ProductDto> getProducts(int start) {

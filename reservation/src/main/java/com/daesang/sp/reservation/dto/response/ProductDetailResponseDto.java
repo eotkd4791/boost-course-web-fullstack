@@ -16,20 +16,57 @@ public class ProductDetailResponseDto {
 	private final List<ProductImageDto> productImages;
 	private final List<ProductPriceDto> productPrices;
 	
-	public ProductDetailResponseDto(
-			int averageScore, 
-			List<CommentDto> comments, 
-			DisplayInfoDto displayInfo,
-			DisplayInfoImageDto displayInfoImage, 
-			List<ProductImageDto> productImages,
-			List<ProductPriceDto> productPrices
-	) {
-		this.averageScore = averageScore;
-		this.comments = comments;
-		this.displayInfo = displayInfo;
-		this.displayInfoImage = displayInfoImage;
-		this.productImages = productImages;
-		this.productPrices = productPrices;
+	
+	public static class Builder {
+		private int averageScore;
+		private List<CommentDto> comments;
+		private DisplayInfoDto displayInfo;
+		private DisplayInfoImageDto displayInfoImage;
+		private List<ProductImageDto> productImages;
+		private List<ProductPriceDto> productPrices;
+		
+		public Builder averageScore(int averageScore) {
+			this.averageScore = averageScore;
+			return this;
+		}
+		
+		public Builder comments(List<CommentDto> comments) {
+			this.comments = comments;
+			return this;
+		}
+		
+		public Builder displayInfo(DisplayInfoDto displayInfo) {
+			this.displayInfo = displayInfo;
+			return this;
+		}
+		
+		public Builder displayInfoImage(DisplayInfoImageDto displayInfoImage) {
+			this.displayInfoImage = displayInfoImage;
+			return this;
+		}
+		
+		public Builder productImages(List<ProductImageDto> productImages) {
+			this.productImages = productImages;
+			return this;
+		}
+		
+		public Builder productPrices(List<ProductPriceDto> productPrices) {
+			this.productPrices = productPrices;
+			return this;
+		}
+		
+		public ProductDetailResponseDto builder() {
+			return new ProductDetailResponseDto(this);
+		}
+	}
+	
+	private ProductDetailResponseDto(Builder builder) {
+		averageScore = builder.averageScore;
+		comments = builder.comments;
+		displayInfo = builder.displayInfo;
+		displayInfoImage = builder.displayInfoImage;
+		productImages = builder.productImages;
+		productPrices = builder.productPrices;
 	}
 
 	public int getAverageScore() {

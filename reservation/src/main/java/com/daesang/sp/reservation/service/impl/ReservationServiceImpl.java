@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.daesang.sp.reservation.dao.ReservationDao;
+import com.daesang.sp.reservation.dto.CommentImageDto;
 import com.daesang.sp.reservation.dto.DisplayInfoDto;
 import com.daesang.sp.reservation.dto.ReservationDto;
 import com.daesang.sp.reservation.dto.ReservationPriceDto;
@@ -116,18 +117,15 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	public CommentResponseDto createCommentResponse(CommentRequestDto commentRequest) {
 		String comment = commentRequest.getComment();
-		// CommentImageDto commentImage
+		CommentImageDto commentImage = new CommentImageDto();
+		int commentId = 1;
 		int productId = commentRequest.getProductId();
 		int reservationInfoId = commentRequest.getReservationInfoId();
 		int score = commentRequest.getScore();
 		
-		return new CommentResponseDto(
-				comment, 
-				null, 
-				0, 
-				productId, 
-				reservationInfoId, 
-				score
-		);
+		return new CommentResponseDto.Builder(reservationInfoId, commentId, productId, commentImage)
+				.comment(comment)
+				.score(score)
+				.build();
 	}
 }

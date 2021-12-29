@@ -50,14 +50,14 @@ public class ProductDetailServiceImpl implements ProductDetailService {
 		
 		List<CommentDto> commentsMappedWithImages = this.mapCommentImageToComment(comments, commentImages);
 		
-		return new ProductDetailResponseDto(
-				averageScore,
-				commentsMappedWithImages,
-				displayInfo,
-				displayInfoImage,
-				productImages,
-				productPrices
-		);
+		return new ProductDetailResponseDto.Builder()
+				.averageScore(averageScore)
+				.comments(commentsMappedWithImages)
+				.displayInfo(displayInfo)
+				.displayInfoImage(displayInfoImage)
+				.productImages(productImages)
+				.productPrices(productPrices)
+				.builder();
 	}
 	
 	private List<CommentDto> mapCommentImageToComment(List<CommentDto> comments, List<CommentImageDto> commentImages) {

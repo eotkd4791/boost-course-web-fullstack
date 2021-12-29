@@ -14,22 +14,50 @@ public class CommentResponseDto {
 	private final LocalDateTime createDate;
 	private final LocalDateTime modifyDate;
 	
-	public CommentResponseDto(
-			String comment, 
-			CommentImageDto commentImage, 
+	public static class Builder {
+		private final int commentId;
+		private final int productId;
+		private final int reservationInfoId;
+		private final CommentImageDto commentImage;
+		private int score;
+		private String comment;
+		
+		public Builder( 
 			int commentId, 
 			int productId,
-			int reservationInfoId, 
-			int score
-	) {
-		this.comment = comment;
-		this.commentId = commentId;
-		this.commentImage = commentImage;
-		this.productId = productId;
-		this.reservationInfoId = reservationInfoId;
-		this.score = score;
-		this.createDate = LocalDateTime.now();
-		this.modifyDate = LocalDateTime.now();
+			int reservationInfoId,
+			CommentImageDto commentImage
+		) {
+			this.commentId = commentId;
+			this.reservationInfoId = reservationInfoId;
+			this.productId = productId;
+			this.commentImage = commentImage;
+		}
+		
+		public Builder comment(String comment) {
+			this.comment = comment;
+			return this;
+		}
+		
+		public Builder score(int score) {
+			this.score = score;
+			return this;
+		}
+		
+		public CommentResponseDto build() {
+			return new CommentResponseDto(this);
+		}
+	}
+	
+	private CommentResponseDto(Builder builder) {
+		comment = builder.comment;
+		commentId = builder.commentId;
+		commentImage = builder.commentImage;
+		productId = builder.productId;
+		reservationInfoId = builder.reservationInfoId;
+		score = builder.score;
+		createDate = LocalDateTime.now();
+		modifyDate = LocalDateTime.now();
 	}
 
 	public String getComment() {
