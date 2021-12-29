@@ -28,7 +28,7 @@ public class ProductController {
 	}
 	
 	@GetMapping
-	public ProductResponseDto getProducts(
+	public ProductResponseDto products(
 			@RequestParam(required = false, defaultValue = "0") int categoryId,
 			@RequestParam(defaultValue = "0") int start
 	) {
@@ -36,10 +36,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/{displayInfoId}")
-	public ProductDetailResponseDto getProductDetail(
-			@PathVariable int displayInfoId, 
-			HttpSession session
-	) {
+	public ProductDetailResponseDto productDetail(@PathVariable int displayInfoId, HttpSession session) {
 		ProductDetailResponseDto productDetailResponse = this.productDetailService.getProductDetail(displayInfoId);
 		session.setAttribute("productDetail", productDetailResponse);
 		

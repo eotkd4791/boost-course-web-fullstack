@@ -63,7 +63,7 @@ public class ProductDetailDao {
 		return this.namedParameterJdbcTemplate.queryForObject(
 				SELECT_ONE_DISPLAY_INFO, 
 				param,
-				displayInfoDtoRowMapper
+				this.displayInfoDtoRowMapper
 		);
 	}
 	
@@ -73,7 +73,7 @@ public class ProductDetailDao {
 		return this.namedParameterJdbcTemplate.queryForObject(
 				SELECT_ONE_DISPLAY_INFO_IMAGE_BY_DISPLAY_INFO_ID, 
 				param,
-				displayInfoImageRowMapper
+				this.displayInfoImageRowMapper
 		);
 	}
 	
@@ -83,7 +83,7 @@ public class ProductDetailDao {
 		return this.namedParameterJdbcTemplate.query(
 				SELECT_ALL_COMMENTS_BY_DISPLAY_INFO_ID, 
 				param, 
-				commentRowMapper
+				this.commentRowMapper
 		);
 	}
 	
@@ -93,7 +93,7 @@ public class ProductDetailDao {
 		return this.namedParameterJdbcTemplate.query(
 				SELECT_SOME_COMMENT_IMAGES_BY_DISPLAY_INFO_ID, 
 				param, 
-				commentImageRowMapper
+				this.commentImageRowMapper
 		);
 	}
 	
@@ -103,7 +103,7 @@ public class ProductDetailDao {
 		return this.namedParameterJdbcTemplate.query(
 				SELECT_SOME_PRODUCT_IMAGES_BY_DISPLAY_INFO_ID, 
 				param,
-				productImageRowMapper
+				this.productImageRowMapper
 		);
 	}
 	
@@ -113,7 +113,7 @@ public class ProductDetailDao {
 		return this.namedParameterJdbcTemplate.query(
 				SELECT_SOME_PRODUCT_PRICES_BY_DISPLAY_INFO_ID, 
 				param,
-				productPriceRowMapper
+				this.productPriceRowMapper
 		);
 	}	
 }

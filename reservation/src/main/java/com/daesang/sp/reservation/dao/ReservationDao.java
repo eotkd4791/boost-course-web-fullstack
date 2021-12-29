@@ -44,7 +44,7 @@ public class ReservationDao {
 		return this.namedParameterJdbcTemplate.query(
 				SELECT_RESERVATIONS_BY_EMAIL, 
 				params, 
-				reservationRowMapper
+				this.reservationRowMapper
 		);
 	}
 
@@ -54,7 +54,7 @@ public class ReservationDao {
 		return this.namedParameterJdbcTemplate.queryForObject(
 				SELECT_DISPLAY_INFO_BY_EMAIL, 
 				params, 
-				displayInfoRowMapper
+				this.displayInfoRowMapper
 		);
 	}
 
@@ -93,12 +93,7 @@ public class ReservationDao {
 		return this.namedParameterJdbcTemplate.query(
 				SELECT_PRODUCT_PRICES_BY_RESERVATION_ID, 
 				params, 
-				priceRowMapper
+				this.priceRowMapper
 		);
-	}
-	
-	public void addComment(int reservationInfoId) {
-		
-		
 	}
 }

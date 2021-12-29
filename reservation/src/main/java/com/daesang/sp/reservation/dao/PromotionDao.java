@@ -24,6 +24,7 @@ public class PromotionDao {
 	}
 	
 	public List<PromotionDto> getPromotionImages() {
-		return this.jdbcTemplate.query(SELECT_ALL_PROMOTION_IMAGES, promotionImageRowMapper);
+		return this.jdbcTemplate
+				.query(SELECT_ALL_PROMOTION_IMAGES, this.promotionImageRowMapper);
 	}	  
 }

@@ -17,7 +17,7 @@ public class PromotionController {
 	}
 	
 	@GetMapping
-	public PromotionResponseDto getPromotionImages() {
-		return promotionService.getPromotionImages();
+	public PromotionResponseDto promotionImages() {
+		return this.promotionService.getPromotionImages();
 	}
 }

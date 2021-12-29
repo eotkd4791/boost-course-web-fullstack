@@ -11,4 +11,5 @@ public interface ReservationService {
 	ReservationResponseDto createNewReservation(ReservationRequestDto reservationRequest);
 	ReservationResponseDto updateReservationStatus(int reservationInfoId);
 	CommentResponseDto addComment(CommentRequestDto commentRequest);
+	void readCommentImage(CommentRequestDto commentRequest);
 }

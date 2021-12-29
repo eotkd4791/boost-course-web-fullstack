@@ -26,7 +26,7 @@ public class ReservationController {
 	}
 	
 	@GetMapping
-	public MyReservationsResponseDto getReservations(
+	public MyReservationsResponseDto myreservation(
 		@SessionAttribute("reservationEmail") String reservationEmail
 	) {
 		return this.reservationService.getReservations(reservationEmail);
@@ -43,7 +43,7 @@ public class ReservationController {
 	}
 
 	@PostMapping("/{reservationInfoId}/comments")
-	public CommentResponseDto addComments(@ModelAttribute CommentRequestDto commentRequest) {
+	public CommentResponseDto addComment(@ModelAttribute CommentRequestDto commentRequest) {
 		return this.reservationService.addComment(commentRequest);
 	}
 }

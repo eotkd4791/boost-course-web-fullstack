@@ -26,11 +26,7 @@ public class PageController {
 	}
 	
 	@GetMapping("/detail")
-	public String getDetailPage(
-			@RequestParam int id,
-			HttpSession session,
-			ModelMap model	
-	) {
+	public String getDetailPage(@RequestParam int id, HttpSession session, ModelMap model) {
 		String reservationEmail = (String) session.getAttribute("reservationEmail");
 		model.addAttribute("id", id);
 		model.addAttribute("reservationEmail", reservationEmail);
@@ -39,10 +35,7 @@ public class PageController {
 	}
 	
 	@GetMapping("/review")
-	public String serveMoreReviewPage(
-			@SessionAttribute("productDetail") ProductDetailResponseDto productDetail, 
-			ModelMap model
-	) {
+	public String serveMoreReviewPage(@SessionAttribute("productDetail") ProductDetailResponseDto productDetail, ModelMap model) {
 		model.addAttribute("productDetail", productDetail);
 		return "review";
 	}
@@ -53,10 +46,7 @@ public class PageController {
 	}
 	
 	@PostMapping("/bookinglogin")
-	public String postBookinglogin(
-			@ModelAttribute LoginRequestDto loginRequest, 
-			HttpSession session
-	) {
+	public String postBookinglogin(@ModelAttribute LoginRequestDto loginRequest, HttpSession session) {
 		session.setAttribute("reservationEmail", loginRequest.getReservationEmail());
 		
 		return "redirect:/myreservation";

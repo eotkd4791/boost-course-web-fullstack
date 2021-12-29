@@ -91,6 +91,7 @@ public class ReservationServiceImpl implements ReservationService {
 		return createCommentResponse(commentRequest);
 	}
 	
+	@Override
 	public void readCommentImage(CommentRequestDto commentRequest) {
 		MultipartFile imageFile = commentRequest.getAttachedImage();
 		String imageFileName = imageFile.getOriginalFilename();

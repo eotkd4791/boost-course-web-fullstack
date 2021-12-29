@@ -18,7 +18,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public CategoryResponseDto getCategories() {
+	public CategoryResponseDto getAllCategories() {
 		List<CategoryDto> categories = categoryDao.getCategories();
 		return new CategoryResponseDto(categories);
 	}
